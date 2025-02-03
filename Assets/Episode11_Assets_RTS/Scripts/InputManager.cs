@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
@@ -16,10 +17,25 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+        /*
+        Old Input System
+
         if (Input.GetMouseButtonDown(0))
              OnClicked?.Invoke();
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
              OnExit?.Invoke();
+        */
+
+        // New Input System
+
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            OnClicked?.Invoke();
+        }
+        if (Keyboard.current.escapeKey.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame)
+        { 
+            OnExit?.Invoke(); 
+        }
     }
 
     public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
