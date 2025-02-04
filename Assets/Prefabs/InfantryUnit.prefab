@@ -15622,6 +15622,8 @@ GameObject:
   - component: {fileID: 4327583958072723131}
   - component: {fileID: 4571917490046400233}
   - component: {fileID: 1111848194010432783}
+  - component: {fileID: 5603677700701583487}
+  - component: {fileID: 6543136066734874600}
   m_Layer: 7
   m_Name: InfantryUnit
   m_TagString: Untagged
@@ -15953,6 +15955,32 @@ MonoBehaviour:
   rotationSensitivity: 0.01
   positionPrecision: 0.01
   scalePrecision: 0.01
+--- !u!114 &5603677700701583487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8450005082627431324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ae01b963e024efb8b7fbfab9e6e2ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6543136066734874600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8450005082627431324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316ba0ddb15484ac19a6db7bcda8738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
+  Data: {fileID: 11400000, guid: 47ecbf77d8524482495dd2de6d03914c, type: 2}
 --- !u!1 &8480171081848512579
 GameObject:
   m_ObjectHideFlags: 0
