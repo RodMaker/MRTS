@@ -38,8 +38,29 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
+    // public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
 
+    /// <summary>
+    /// Checks if the mouse pointer is currently over a UI object.
+    /// </summary>
+    /// <returns>True if the pointer is over a UI object, false otherwise.</returns>
+    public bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+        for (int i = 0; i < results.Count; i++)
+        {
+            if (results[i].gameObject.layer == 5) //5 = UI layer
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     public Vector3 GetSelectedMapPosition()
     {
