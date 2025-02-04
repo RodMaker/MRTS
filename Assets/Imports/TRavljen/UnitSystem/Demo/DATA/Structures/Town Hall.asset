@@ -29,7 +29,8 @@ MonoBehaviour:
   - Producable: {fileID: 11400000, guid: 551d5b6b664c949599a5ea70b7f04a43, type: 2}
     Quantity: 100
   ProductionDuration: 25
-  associatedPrefab: {fileID: 1049282772526169942, guid: e6bd89075f6ef44a5b801b8a908e3494, type: 3}
+  associatedPrefab: {fileID: 1049282772526169942, guid: 44d38302f0e6c564cbb026304da70116,
+    type: 3}
   GroupedActions:
   - Name: Research
     Actions:
