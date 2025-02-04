@@ -74,7 +74,7 @@ public class PlacementSystem : MonoBehaviour
 
     private void PlaceStructure()
     {
-        if(inputManager.IsPointerOverUI()){
+        if(inputManager.IsPointerOverUIObject()){
             Debug.Log("Pointer was over UI - Returned");
             return;
         }
