@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UnitSelectionBox : MonoBehaviour
 {
@@ -24,10 +25,32 @@ public class UnitSelectionBox : MonoBehaviour
         DrawVisual();
     }
 
+    /// <summary>
+    /// Checks if the mouse pointer is currently over a UI object.
+    /// </summary>
+    /// <returns>True if the pointer is over a UI object, false otherwise.</returns>
+    public bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+        for (int i = 0; i < results.Count; i++)
+        {
+            if (results[i].gameObject.layer == 5) //5 = UI layer
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private void Update()
     {
         // When Clicked
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !IsPointerOverUIObject())
         {
             startPosition = Input.mousePosition;
 
@@ -36,7 +59,7 @@ public class UnitSelectionBox : MonoBehaviour
         }
 
         // When Dragging
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !IsPointerOverUIObject())
         {
             if (boxVisual.rect.width > 0 || boxVisual.rect.height > 0)
             {
@@ -50,7 +73,7 @@ public class UnitSelectionBox : MonoBehaviour
         }
 
         // When Releasing
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && !IsPointerOverUIObject())
         {
             UnitSelectionManager.Instance.playedDuringThisDrag = false;
 
